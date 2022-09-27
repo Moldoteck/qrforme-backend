@@ -10,4 +10,5 @@ export default cleanEnv(process.env, {
   PORT: num({ default: 1337 }),
   JWT: str(),
   MONGO: str(),
+  MAGIC_PRIVATE_KEY: str(),
 })

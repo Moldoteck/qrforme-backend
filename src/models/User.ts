@@ -11,10 +11,8 @@ import { sign } from '@/helpers/jwt'
   schemaOptions: { timestamps: true },
 })
 export class User {
-  @prop({ index: true, lowercase: true })
-  email?: string
-  @prop({ required: true, index: true })
-  name!: string
+  @prop({ index: true, required: true, lowercase: true })
+  email!: string
 
   @prop({ index: true, unique: true })
   token?: string
@@ -40,10 +38,7 @@ export class User {
 
 export const UserModel = getModelForClass(User)
 
-export async function findOrCreateUser(loginOptions: {
-  name: string
-  email?: string
-}) {
+export async function findOrCreateUser(loginOptions: { email: string }) {
   const user = await UserModel.findOneAndUpdate(
     loginOptions,
     {},
