@@ -14,7 +14,7 @@ export default async function getMagicUser(
 ): Promise<MagicResponse> {
   try {
     const didToken = accessToken.substr(7)
-
+    magic.user
     await magic.token.validate(didToken)
 
     res.status(200).json({ authenticated: true })
